@@ -23,8 +23,18 @@ public class LunarFullscreenFix {
         System.out.println("File contents: " + json);
         JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
         System.out.println("Editing...");
+
+
+
+        /*
+        the only part that matters
+         */
         jsonObject.remove("fullscreen");
         jsonObject.addProperty("fullscreen","false"); //boolean is a string for some reason
+
+
+
+
         String jsonNew = jsonObject.toString();
         System.out.println("Saving...");
         try {
@@ -50,7 +60,7 @@ public class LunarFullscreenFix {
         return "none";
     }
     public static File getOptionsLC(String path){
-        if (path == null){
+        if (path == "none"){
             return null;
         }
         return new File(path);
